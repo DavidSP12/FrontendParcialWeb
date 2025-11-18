@@ -1,0 +1,73 @@
+<div class="container">
+  <h1>Nueva Clínica</h1>
+
+  <div *ngIf="error()" class="error">{{ error() }}</div>
+  <div *ngIf="success()" class="success">{{ success() }}</div>
+
+  <form (ngSubmit)="onSubmit()" #clinicaForm="ngForm">
+    <div class="form-group">
+      <label for="nombre">Nombre:</label>
+      <input 
+        type="text" 
+        id="nombre" 
+        name="nombre" 
+        [(ngModel)]="clinica.nombre" 
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="direccion">Dirección:</label>
+      <input 
+        type="text" 
+        id="direccion" 
+        name="direccion" 
+        [(ngModel)]="clinica.direccion" 
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="ciudad">Ciudad:</label>
+      <input 
+        type="text" 
+        id="ciudad" 
+        name="ciudad" 
+        [(ngModel)]="clinica.ciudad" 
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="telefono">Teléfono:</label>
+      <input 
+        type="text" 
+        id="telefono" 
+        name="telefono" 
+        [(ngModel)]="clinica.telefono" 
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="cantidadCamas">Cantidad de Camas:</label>
+      <input 
+        type="number" 
+        id="cantidadCamas" 
+        name="cantidadCamas" 
+        [(ngModel)]="clinica.cantidadCamas" 
+        min="1"
+        required
+      />
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" [disabled]="!clinicaForm.valid" class="btn-primary">
+        Guardar
+      </button>
+      <button type="button" (click)="cancel()" class="btn-secondary">
+        Cancelar
+      </button>
+    </div>
+  </form>
+</div>
